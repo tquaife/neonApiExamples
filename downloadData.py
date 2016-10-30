@@ -12,6 +12,9 @@ def readURLToBuffer( url, buff ):
   """Use pyCurl to read the contents of a 
   URL into a StringIO buffer.
   """
+  if isinstance(buff, StringIO)==False:
+    raise TypeError( "buff should be a StringIO instance")
+    
   c = pycurl.Curl()
   c.setopt(c.URL, url)
   c.setopt(c.WRITEDATA, buff)
